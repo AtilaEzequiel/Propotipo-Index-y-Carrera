@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Propotipo_Index_y_Carrera.Models.CarreraDetalle>
+
+
+<!-- model toma los parametrso de  carrera-->
+@{
+    ViewData["Title"] = "Detalle";
+}
+@if (true)
+{
+    string exste="null";
+    @foreach (var item in Model)
+    {
+        <!--toma los valores  del model-->
+        
+        @if (exste == "null") //nose que pense
+        {
+            exste = "algo";
+            <img src=" @Html.DisplayFor(modelItem => item.Imagen)" width="100%" height="400px" class="border border-dark rounded ">
+            <div class=" text-lg-center">
+                <h1>@Html.DisplayFor(modelItem => item.nombre)</h1>
+               
+            </div>
+
+
+            <div class="container">
+                <br>
+                <!--toma los valores el nombre del parametro de carrera <hr />-->
+                <h4>@Html.DisplayNameFor(modelItem=> item.Description)</h4>
+
+
+
+                <dl class="row">
+
+
+                    <dd class = "col-sm-8">
+                        <!--toma los valores  del model-->
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </dd>
+                    <dd class = "col-sm-4">
+                        <!--toma los valores  del model https://drive.google.com/uc?export=view&id=   @Html.DisplayFor(modelItem => item.Imagen)-->
+
+                        <!--<img src="https://drive.google.com/uc?export=view&id=1z_dh1O5iqOfnivzdsOOLfdlPEKxxzolH" width="100%"  role="button" class="btn btn-large btn-primary" data-toggle="modal">-->
+
+                    </dd>
+
+                </dl>
+            </div>
+
+            <div class="container ">
+                <table class="table container">
+                    @*<thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pregunta)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Respuesta)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>*@
+                    <tbody>
+
+                        <tr>
+                            <td>      
+                                <h5>Duracion de la carrera</h5>
+                                @Html.DisplayFor(modelItem => item.Duracion)
+
+                            </td>
+                            <td>
+                                <h5>Titulo Oficial</h5>
+                                @Html.DisplayFor(modelItem => item.Titulo)
+
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>       
+                                <h5>Relleno</h5>
+                                @Html.DisplayFor(modelItem => item.Incumbencias)
+
+                            </td>
+                            <td>
+                                <h5>carrera</h5>
+                                @Html.DisplayFor(modelItem => item.nombre)
+
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="container menu">
+                <h4> @Html.DisplayNameFor(modelItem => item.Incumbencias)</h4>
+                <a>
+                    @Html.DisplayFor(modelItem=>item.Incumbencias)
+                    <a  width="100%"  href="#slide1" role="button" class="btn btn-large btn-primary btn-success" >1 año   </a> 
+                    <a  width="100%"  href="#slide2" role="button" class="btn btn-large btn-primary btn-success" >2 año   </a> 
+                    <a  width="100%"  href="#slide3" role="button" class="btn btn-large btn-primary btn-success" >3 año   </a> 
+                </a>
+            </div>
+
+            <div class="container">
+                
+                
+                    <ul class="slider">
+                        
+                            <li id="slide1">
+                            @foreach (var item1 in Model)
+                            {
+                                
+                                <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
+                            }
+    
+                            </li>
+                        
+                        
+                        <li id="slide2">
+
+                        </li>
+                        <li id="slide3">
+                            <h1>Ejemplo con otros elementos</h1>
+                            <p>Esto es un párrafo de ejemplo para comprobar que podemos meter cualquier tipo de elementos en el slider</p>
+                            <a href="https://kikopalomares.com/">¡Corre a mi web para más contenido!</a>
+                        </li>
+                    </ul>
+
+                
+
+            </div>
+        
+            /*
+                                                                <div>
+                                                                    <!--un textoq ue te aparece como elimianar, redirecciona al delete, y le pasa el paramerteo id-->
+                                                                        @*@Html.ActionLink("Eliminar", "Delete", new {  id = Model.Id }) *@
+                                                                        <a asp-action="Delete" asp-route-id="@item.Id_carrera"><input type="submit" value="Eliminar" class="btn btn-primary btn-danger" /></a>|
+                                                                    <!--un texto que direcciona a victormodal mediante el click-->
+                                                                        <a  width="100%"  href="#victorModal" role="button" class="btn btn-large btn-primary btn-success" data-toggle="modal">Modificar   </a> 
+                                                                        <p>
+                                                                        <!--victormodal la panatalla emergente que me gusto usar y punto-->
+                                                                        <div id="victorModal" class="modal fade">
+                                                                            <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                            <h4 class="container modal-title">@Html.DisplayFor(modelItem => item.nombre)</h4>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                            <!-- realiza la accion detalle abuse del detalle y crea uno identitco pero con el httpost y punto, si igual el edit y el detalle muesdtran lo mismo-->
+                                                                                <form asp-action="Detalle">
+                                                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                                <input type="hidden" asp-for="modelItem.nombre" />
+                                                                            <div class="form-group">
+                                                                            </div>
+                                                                                <div class="form-group">
+                                                                                <label asp-for="@nombre" class="control-label"></label>
+                                                                                <input asp-for="nombre"   class="form-control" />
+                                                                                <span asp-validation-for="@item.nombre" class="text-danger"></span>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                <label asp-for="@item.Description" class="control-label"></label>
+                                                                                <!--   <textarea asp-for="Description" class="form-control " rows="10" cols="40">@Html.DisplayFor(modelItem => item.Description)</textarea> 
+                                                                                 -->                                                 
+                                                                            <!--aarea de texto mucho mas grande y lindo, rellenar la lo que muestra por que sino paarece cualquier cosa-->
+                                                                                <textarea asp-for="@item.Description" class="form-control " rows="10" cols="40">@Html.DisplayFor(modelItem => item.Description)</textarea> 
+                                                                                <span asp-validation-for="@item.Description" class="text-danger"></span>
+                                                                                </div>
+                                                                            
+
+
+                                                                    <div class="form-group">
+                                                                        <br />
+                                                                        <input type="submit" value="Editar" class="btn btn-primary btn-success" />
+                                                                                </div>
+
+
+                                                                                </form>
+
+                                                                                <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default btn-info" data-dismiss="modal">Cerrar</button>
+                                                                             <a asp-action="Delete" asp-route-id="@item.Id_carrera"><input type="submit" value="Eliminar" class="btn btn-primary btn-danger" /></a>
+
+                                                                        @*   @Html.ActionLink("Eliminar", "Delete", new {  id = Model.Id })
+                                                                   *@
+
+                                                                   </div>
+                                                             </div>     
+                                                </div>   
+                            </div>
+                            </div>
+                            </p>
+
+        </div>
+        */
+        
+        <div>
+            <a asp-action="Index" class="btn btn-info">Volver atras</a>
+        </div>
+        }
+        
+    }
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

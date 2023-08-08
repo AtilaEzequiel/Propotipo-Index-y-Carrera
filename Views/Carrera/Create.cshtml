@@ -1,0 +1,106 @@
+﻿@model Propotipo_Index_y_Carrera.Models.Carreras
+
+
+
+
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">File upload in ASP.NET Core MVC</div>
+        <div class="panel-body">
+            
+            
+            
+            
+            <form method="post" enctype="multipart/form-data" asp-controller="Carrera" asp-action="Create">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+                <div class="form-group">
+                    <label asp-for="nombre" class="control-label"></label>
+                    <input asp-for="nombre" class="form-control" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duracion" class="control-label"></label>
+                    <input asp-for="Duracion" class="form-control" />
+                    <span asp-validation-for="Duracion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Incumbencias" class="control-label"></label>
+                    <input asp-for="Incumbencias"  class="form-control" />
+                    <span asp-validation-for="Incumbencias" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagen" class="control-label">Por favor escribir el mismo nombre de la imagen (con .png/.jpeg)</label>
+                    <input asp-for="Imagen"  class="form-control" />
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+                   
+                
+                
+                <div class="container">
+                    <div class="col-sm-12">
+                        <div class="col-md-2">
+                            Choose Files
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" name="postedFiles" class="form-control" multiple />
+                        </div>
+                        <div class="col-md-2 mt-2">
+
+                        </div>
+                        <div class="col-md-6 mt-4 text-center">
+                            <h1>@ViewBag.id</h1>
+                            <input  type="submit" value="Create" class="btn btn-primary" />
+                            <input asp-controller="Incumbencia" asp-action="Create"  type="submit" class="btn btn-primary"value="incu" />
+                            <a asp-controller="Incumbencia" asp-action="Create" asp-route-id="@ViewBag.id">Details</a>
+                            @Html.ActionLink("Incumbencia", "Create","Incumbencia",  new {  id = @ViewBag.id }) 
+                            
+                        </div>
+                    </div>
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="col-sm-9">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Image Name</th>
+                                        <th>Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in (@ViewBag.Message as string).Split(','))
+                                    {
+                                        if (!string.IsNullOrEmpty(item))
+                                        {
+                                            <tr>
+                                                <td >@item</td>
+                                                
+                                                <td><img src="/uploads/@item" title="@item" width="50" height="50" /></td>
+                                                
+                                            </tr>
+                                        }
+                                        
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+</div>

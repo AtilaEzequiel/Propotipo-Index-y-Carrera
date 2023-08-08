@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Propotipo_Index_y_Carrera.Models.Pregunta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pregunt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Respuesta)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pregunt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Respuesta)
+            </td>
+           
+            <td>
+                
+                <a asp-action="Detalle" asp-route-id="@item.Id_Pregunta">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Pregunta">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
