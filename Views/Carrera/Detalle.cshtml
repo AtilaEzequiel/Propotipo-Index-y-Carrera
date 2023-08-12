@@ -16,11 +16,11 @@
         {
             exste = "algo";
             <img src=" @Html.DisplayFor(modelItem => item.Imagen)" width="100%" height="400px" class="border border-dark rounded ">
-            <div class=" text-lg-center">
+            <div class=" text-lg-center color">
                 <h1>@Html.DisplayFor(modelItem => item.nombre)</h1>
                
             </div>
-
+           
 
             <div class="container">
                 <br>
@@ -29,12 +29,13 @@
 
 
 
-                <dl class="row">
+                <dl class="">
 
+                    @Html.DisplayFor(modelItem => item.Description)
 
                     <dd class = "col-sm-8">
                         <!--toma los valores  del model-->
-                        @Html.DisplayFor(modelItem => item.Description)
+                        
                     </dd>
                     <dd class = "col-sm-4">
                         <!--toma los valores  del model https://drive.google.com/uc?export=view&id=   @Html.DisplayFor(modelItem => item.Imagen)-->
@@ -46,8 +47,8 @@
                 </dl>
             </div>
 
-            <div class="container ">
-                <table class="table container">
+            <div class=" color">
+                <table class="table container text-center">
                     @*<thead>
                     <tr>
                         <th>
@@ -76,9 +77,10 @@
 
                             </td>
                         </tr>
+                        
                         <tr>
                             <td>       
-                                <h5>Relleno</h5>
+                                <h5>Horarios</h5>
                                 @Html.DisplayFor(modelItem => item.Incumbencias)
 
                             </td>
@@ -96,43 +98,80 @@
 
             </div>
 
-            <div class="container menu">
-                <h4> @Html.DisplayNameFor(modelItem => item.Incumbencias)</h4>
-                <a>
-                    @Html.DisplayFor(modelItem=>item.Incumbencias)
-                    <a  width="100%"  href="#slide1" role="button" class="btn btn-large btn-primary btn-success" >1 año   </a> 
-                    <a  width="100%"  href="#slide2" role="button" class="btn btn-large btn-primary btn-success" >2 año   </a> 
-                    <a  width="100%"  href="#slide3" role="button" class="btn btn-large btn-primary btn-success" >3 año   </a> 
-                </a>
-            </div>
 
-            <div class="container">
+             <div class="container">
+                <br>
+                <!--toma los valores el nombre del parametro de carrera <hr />-->
                 
-                
-                    <ul class="slider">
+
+
+
+                <dl class="row">
+                    <div class="">
+                        <h4> @Html.DisplayNameFor(modelItem => item.Incumbencias)</h4>
+                    </div>
+                    
+                    <dd class = "col-sm-6">
                         
-                            <li id="slide1">
-                            @foreach (var item1 in Model)
-                            {
-                                
-                                <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
-                            }
-    
+                            <li>
+                                <a  width="100%"  href="#slide1" role="button" class="btn btn-large btn-primary btn-success" >1 año   </a> 
+
                             </li>
+                             <li>
+                                        <a  width="100%"  href="#slide2" role="button" class="btn btn-large btn-primary btn-success" >2 año   </a> 
+
+                            </li>
+                             <li>
+                                 <a  width="100%"  href="#slide3" role="button" class="btn btn-large btn-primary btn-success" >3 año   </a>
+                            </li>
+                        <a>
+                                                        
+                        </a>
+                        <!--toma los valores  del model-->
+                        
+                    </dd>
+                    <dd class = "col-sm-3">
+                        <!--toma los valores  del model https://drive.google.com/uc?export=view&id=   @Html.DisplayFor(modelItem => item.Imagen)-->
+
+                        <!--<img src="https://drive.google.com/uc?export=view&id=1z_dh1O5iqOfnivzdsOOLfdlPEKxxzolH" width="100%"  role="button" class="btn btn-large btn-primary" data-toggle="modal">-->
+                        
+                        <ul class="slider">
+                        
+                                <li id="slide1">
+                                @foreach (var item1 in Model)
+                                {
+                                    if (item1.categotia_materia == "incumbencia_1")
+                                    {
+                                         <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
+                                    }
+                           
+                                }
+    
+                                </li>
                         
                         
-                        <li id="slide2">
+                            <li id="slide2">
+                                @foreach (var item1 in Model)
+                                {
+                                     if (item1.categotia_materia == "incumbencia_2")
+                                    {
+                                         <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
+                                    }
+                                }
+                            </li>
+                            <li id="slide3">
+                                @foreach (var item1 in Model)
+                                {
+                                     if (item1.categotia_materia == "incumbencia_3")
+                                    {
+                                         <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </dd>
 
-                        </li>
-                        <li id="slide3">
-                            <h1>Ejemplo con otros elementos</h1>
-                            <p>Esto es un párrafo de ejemplo para comprobar que podemos meter cualquier tipo de elementos en el slider</p>
-                            <a href="https://kikopalomares.com/">¡Corre a mi web para más contenido!</a>
-                        </li>
-                    </ul>
-
-                
-
+                </dl>
             </div>
         
             /*
@@ -203,9 +242,17 @@
             <a asp-action="Index" class="btn btn-info">Volver atras</a>
         </div>
         }
+
+        
         
     }
 }
+ <a src="~/uploads/GUIA P5.pdf" type="application/pdf" >pdf</a>
+            <a href="~/uploads/GUIA P5.pdf" target="_blank" rel="noopener noreferrer"> pdf asd</a>
+           
+
+            <embed src="~/uploads/GUIA P5.pdf" type="application/pdf" width="100%" height="600px" />
+            <embed src="~/uploads/GUIA P5.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px" />
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

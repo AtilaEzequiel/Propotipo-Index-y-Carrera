@@ -156,7 +156,7 @@ namespace Propotipo_Index_y_Carrera.Controllers
 
                 connection.Open();
 
-                string queryString = "INSERT INTO Carreras ( nombre, Descripcion, Duracion, Titulo, Incumbencias, imagen) VALUES ( @nombre, @Descripcion, @Duracion, @Titulo, @Incumbencias, @Imagen);";
+                string queryString = "INSERT INTO Carreras ( nombre, Descripcion, Duracion, Titulo, Incumbencias, imagen, Categoria) VALUES ( @nombre, @Descripcion, @Duracion, @Titulo, @Incumbencias, @Imagen,@Categoria);";
                 //string queryString = "INSERT INTO MovieADO (Id, titulo, fecha, genero, precio) VALUES (10, 'Delta', 15/12/1999, 'magia', 600);";
                 SqlCommand command = new SqlCommand(queryString, connection);
                 //  command.ExecuteReader(queryString);
@@ -169,10 +169,11 @@ namespace Propotipo_Index_y_Carrera.Controllers
 
                 command.Parameters.AddWithValue("@Incumbencias", mov.Incumbencias);
                 command.Parameters.AddWithValue("@Imagen", alfa);
+                command.Parameters.AddWithValue("@Categoria", "Carrera");
 
                 //ViewBag.id = 4002;
 
-               
+
                 SqlDataReader reader = command.ExecuteReader();
 
 

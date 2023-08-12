@@ -78,3 +78,27 @@ ul, li {
             font-size: 20px;
             border-radius: 100%;
         }
+
+.color {
+    background-color: blanchedalmond;
+    
+}
+
+.btn-color {
+    color: blanchedalmond;
+    background-color: blanchedalmond;
+    border-color: blanchedalmond;
+}
+
+
+
+
+
+
+
+
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 70%;
+        margin: auto;
+    }

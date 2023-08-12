@@ -107,13 +107,15 @@ namespace Propotipo_Index_y_Carrera.Controllers
 
                 connection.Open();
 
-                string queryString = "INSERT INTO Preguntas ( Pregunta, Respuesta) VALUES ( @Pregunta, @Respuesta);";
+                string queryString = "INSERT INTO Preguntas ( Pregunta, Respuesta, Categoria) VALUES ( @Pregunta, @Respuesta, @Categoria);";
                 //string queryString = "INSERT INTO MovieADO (Id, titulo, fecha, genero, precio) VALUES (10, 'Delta', 15/12/1999, 'magia', 600);";
                 SqlCommand command = new SqlCommand(queryString, connection);
                 //  command.ExecuteReader(queryString);
                 //toma los parametros obtenidos para despues agregarlos en el consulta sql
                 command.Parameters.AddWithValue("@pregunta", mov.Pregunt);
                 command.Parameters.AddWithValue("@Respuesta", mov.Respuesta);
+                command.Parameters.AddWithValue("@Categoria", "Pregunta");
+
 
                 //string nameimagen = mov.Imagen;
                 //   command.Parameters.AddWithValue("@nombreimagen", mov.Imagen);
@@ -198,6 +200,7 @@ namespace Propotipo_Index_y_Carrera.Controllers
                         Respuesta = reader[2].ToString(),
                         // Imagen = "https://drive.google.com/uc?export=view&id=" + reader[3].ToString(),
                         //Imagen = reader[3].ToString(),
+                        pregunta_categoria="Pregunta",
                     };
                     return View(movieADOs);
 
