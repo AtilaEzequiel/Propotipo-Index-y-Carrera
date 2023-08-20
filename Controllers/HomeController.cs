@@ -92,8 +92,8 @@ namespace Propotipo_Index_y_Carrera.Controllers
 
                 */
 
-                string queryString = "select Nombre, Descripcion, Categoria from Carreras  Union all select Pregunta, Respuesta, Categoria from Preguntas\r\n";
-                //string queryString = "INSERT INTO MovieADO (Id, titulo, fecha, genero, precio) VALUES (10, 'Delta', 15/12/1999, 'magia', 600);";
+                string queryString = "select Id, Nombre, Descripcion, Categoria from Carreras where Categoria='Carrera' Union all select Id ,Pregunta, Respuesta, Categoria from Preguntas where Categoria='Pregunta'";
+                //string queryString = "select c.Nombre, c.Descripcion, c.Categoria, c.Imagen, p.Pregunta, p.Respuesta, p.Categoria from Carreras c, Preguntas p where c.Categoria = 'Carrera' and p.Categoria = 'Pregunta'";
                 // no me acurdo, creoq ue guarda en un comadno sql lo que debe ejecutar y en que conexion hacerlo
                 SqlCommand command = new SqlCommand(queryString, connection);
                 //  command.ExecuteReader(queryString);
@@ -110,11 +110,25 @@ namespace Propotipo_Index_y_Carrera.Controllers
                     
                     CarrerayPregunta indexhome = new CarrerayPregunta()
                     {
+                        Id =int.Parse( reader[0].ToString()),
+                        nombre = reader[1].ToString(),
+                        Descripcion = reader[2].ToString(),
+                        categoria = reader[3].ToString(),
+
+                    };
+/*
+                    CarrerayPregunta indexhome1 = new CarrerayPregunta()
+                    {
                         nombre = reader[0].ToString(),
                         Descripcion = reader[1].ToString(),
                         categoria = reader[2].ToString(),
-                    };
+                        imagen = reader[3].ToString(),
+                        pregunta = reader[4].ToString(),
+                        respuesta = reader[5].ToString(),
+                        categoriap = reader[6].ToString(),
 
+                    };
+*/
                     listaIndex.Add(indexhome);
                     
                     
