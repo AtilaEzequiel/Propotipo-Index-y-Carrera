@@ -5,6 +5,11 @@
 @{
     ViewData["Title"] = "Detalle";
 }
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 @if (true)
 {
     string exste="null";
@@ -48,7 +53,8 @@
             </div>
 
             <div class=" color">
-                <table class="table container text-center">
+                <div class="container">
+                    <table class="table  text-lg-center">
                     @*<thead>
                     <tr>
                         <th>
@@ -94,17 +100,13 @@
 
                     </tbody>
                 </table>
-
+                </div>
 
             </div>
 
 
              <div class="container">
                 <br>
-                <!--toma los valores el nombre del parametro de carrera <hr />-->
-                
-
-
 
                 <dl class="row">
                     <div class="">
@@ -138,26 +140,98 @@
                         <ul class="slider">
                         
                                 <li id="slide1">
-                                @foreach (var item1 in Model)
-                                {
-                                    if (item1.categotia_materia == "incumbencia_1")
-                                    {
-                                         <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
-                                    }
+                                
+                                       <table class="table table-condensed">
+                                            <thead>
+                                              <tr>
+                                                <th>Primer cuatrimestre</th>
+                                                <th>Segundo cuatrimetre</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                       <tr>
+                                                       @foreach (var item1 in Model)
+                                                        {
+                                                            @if (item1.categotia_materia == "1-1")
+                                                            {
+                                                          
+                                                                <td>@item1.materia</td>
+                                                            
+                                                          
+                                              
+                                                             
+                                                            }
+                                                         }
+                                                        </tr>
+                                                        <tr>
+                                                         @foreach (var item1 in Model)
+                                                        {
+                                                            @if (item1.categotia_materia == "1-2")
+                                                            {
+                                                          
+                                                                <td>@item1.materia</td>
+                                                            
+                                                          
+                                              
+                                                             
+                                                            }
+                                                            
+                                                        }
+                                                          </tr>
+                                                     
                            
-                                }
+                                                
+                                            </tbody>
+                                          </table>
+                                    
     
                                 </li>
                         
                         
                             <li id="slide2">
-                                @foreach (var item1 in Model)
-                                {
-                                     if (item1.categotia_materia == "incumbencia_2")
-                                    {
-                                         <p>@Html.DisplayFor(modelItem1 => item1.materia)</p>
-                                    }
-                                }
+                                <table class="table table-condensed">
+                                            <thead>
+                                              <tr>
+                                                <th>Primer cuatrimestre</th>
+                                                <th>Segundo cuatrimetre</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                       <tr>
+                                                       @foreach (var item1 in Model)
+                                                        {
+                                                            @if (item1.categotia_materia == "2-1")
+                                                            {
+                                                          
+                                                                <td>@item1.materia</td>
+
+                                                             
+                                                            }
+                                                           
+
+                                                        }
+                                                        </tr>
+                                                        <tr>
+                                                         @foreach (var item1 in Model)
+                                                        {
+                                                            @if (item1.categotia_materia == "2-2")
+                                                            {
+                                                          
+                                                                <td>@item1.materia</td>
+                                                            
+                                                          
+                                              
+                                                             
+                                                            }
+                                                        }
+                                                          </tr>
+                                                     
+                           
+                                                }
+                                            </tbody>
+                                          </table>
                             </li>
                             <li id="slide3">
                                 @foreach (var item1 in Model)

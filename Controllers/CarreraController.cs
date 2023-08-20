@@ -263,7 +263,7 @@ namespace Propotipo_Index_y_Carrera.Controllers
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 //filtra por id
-                string queryString = "select c.*, i.materia, i.categoria, i.Id_carrera from Carreras c inner join Incumbencia i on (c.Id= i.Id_carrera) Where c.Id=@Id";
+                string queryString = "select c.*, i.materia, i.categoria, i.Id_carrera from Carreras c inner join Incumbencia i on (c.Id= i.Id_carrera) Where c.Id=@Id order by i.categoria";
                 //string queryString = "INSERT INTO carrera (Id, titulo, fecha, genero, precio) VALUES (10, 'Delta', 15/12/1999, 'magia', 600);";
                 SqlCommand command = new SqlCommand(queryString, connection);
                 //  command.ExecuteReader(queryString);
